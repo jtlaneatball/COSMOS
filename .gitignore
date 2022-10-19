@@ -19,6 +19,7 @@ cosmos/spec/install/outputs
 cosmos/spec/examples.txt
 coverage/
 profile/
+arm64-install-files/
 
 # local env files
 .env.local
