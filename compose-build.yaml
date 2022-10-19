@@ -21,6 +21,7 @@ version: "3.5"
 
 services:
   cosmos-ruby:
+    platform: linux/arm64
     build:
       context: "cosmos-ruby"
       network: host
@@ -33,6 +34,7 @@ services:
     image: "${COSMOS_REGISTRY}/ballaerospace/cosmosc2-ruby:${COSMOS_TAG}"
 
   cosmos-node:
+    platform: linux/arm64
     build:
       context: "cosmos-node"
       network: host
@@ -44,6 +46,7 @@ services:
       - "cosmos-ruby"
 
   cosmos-base:
+    platform: linux/arm64
     build:
       context: "cosmos"
       network: host
@@ -55,6 +58,7 @@ services:
       - "cosmos-ruby"
 
   cosmos-minio:
+    platform: linux/arm64
     build:
       context: "cosmos-minio"
       network: host
@@ -62,6 +66,7 @@ services:
         COSMOS_REGISTRY: ${COSMOS_REGISTRY}
 
   cosmos-redis:
+    platform: linux/arm64
     build:
       context: "cosmos-redis"
       network: host
@@ -69,6 +74,7 @@ services:
         COSMOS_REGISTRY: ${COSMOS_REGISTRY}
 
   cosmos-cmd-tlm-api:
+    platform: linux/arm64
     build:
       context: "cosmos-cmd-tlm-api"
       network: host
@@ -79,6 +85,7 @@ services:
       - "cosmos-base"
 
   cosmos-script-runner-api:
+    platform: linux/arm64
     build:
       context: "cosmos-script-runner-api"
       network: host
@@ -89,6 +96,7 @@ services:
       - "cosmos-base"
 
   cosmos-operator:
+    platform: linux/arm64
     build:
       context: "cosmos-operator"
       network: host
@@ -99,6 +107,7 @@ services:
       - "cosmos-base"
 
   cosmos-traefik:
+    platform: linux/arm64
     build:
       context: "cosmos-traefik"
       network: host
@@ -106,6 +115,7 @@ services:
         COSMOS_REGISTRY: ${COSMOS_REGISTRY}
 
   cosmos-init:
+    platform: linux/arm64
     build:
       context: "cosmos-init"
       network: host
