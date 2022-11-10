@@ -169,7 +169,7 @@
         <div class="pa-1" id="chart" ref="chart" v-show="expand">
           <div :id="`chart${id}`"></div>
           <div id="betweenCharts" />
-          <div :id="`overview${id}`" v-show="!hideOverview"></div>
+          <div :id="`overview${id}`" v-show="showOverview"></div>
         </div>
       </v-expand-transition>
     </v-card>
@@ -493,6 +493,7 @@ export default {
       legendPosition: 'bottom',
       legendPositions: ['top', 'bottom', 'left', 'right'],
       selectedItem: null,
+      showOverview: !this.hideOverview,
       currentType: null,
       title: '',
       overview: null,
@@ -1011,8 +1012,10 @@ export default {
       const chooser = document.getElementsByClassName('c-chooser')[0]
       let height = 100
       if (type === 'overview') {
-        // Hide overview if we're NOT full height
-        this.hideOverview = !this.fullHeight
+        // Show overview if we're full height and we're not explicitly hiding it
+        if (this.fullHeight && !this.hideOverview) {
+          this.showOverview = true
+        }
       } else if (chooser) {
         // Height of chart is viewportSize - chooser - overview - fudge factor (primarily padding)
         height = viewHeight - chooser.clientHeight - height - 190
