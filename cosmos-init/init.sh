@@ -70,23 +70,23 @@ mc admin policy set cosmosminio script user=${COSMOS_SR_MINIO_USERNAME} || exit 
 
 ruby /cosmos/bin/cosmos load /cosmos/plugins/gems/cosmosc2-tool-base-*.gem || exit 1
 ruby /cosmos/bin/cosmos load /cosmos/plugins/gems/cosmosc2-tool-cmdtlmserver-*.gem || exit 1
-ruby /cosmos/bin/cosmos load /cosmos/plugins/gems/cosmosc2-tool-limitsmonitor-*.gem || exit 1
+#ruby /cosmos/bin/cosmos load /cosmos/plugins/gems/cosmosc2-tool-limitsmonitor-*.gem || exit 1
 ruby /cosmos/bin/cosmos load /cosmos/plugins/gems/cosmosc2-tool-cmdsender-*.gem || exit 1
-ruby /cosmos/bin/cosmos load /cosmos/plugins/gems/cosmosc2-tool-scriptrunner-*.gem || exit 1
+#ruby /cosmos/bin/cosmos load /cosmos/plugins/gems/cosmosc2-tool-scriptrunner-*.gem || exit 1
 ruby /cosmos/bin/cosmos load /cosmos/plugins/gems/cosmosc2-tool-packetviewer-*.gem || exit 1
 ruby /cosmos/bin/cosmos load /cosmos/plugins/gems/cosmosc2-tool-tlmviewer-*.gem || exit 1
 ruby /cosmos/bin/cosmos load /cosmos/plugins/gems/cosmosc2-tool-tlmgrapher-*.gem || exit 1
 ruby /cosmos/bin/cosmos load /cosmos/plugins/gems/cosmosc2-tool-dataextractor-*.gem || exit 1
-ruby /cosmos/bin/cosmos load /cosmos/plugins/gems/cosmosc2-tool-dataviewer-*.gem || exit 1
-ruby /cosmos/bin/cosmos load /cosmos/plugins/gems/cosmosc2-tool-handbooks-*.gem || exit 1
-ruby /cosmos/bin/cosmos load /cosmos/plugins/gems/cosmosc2-tool-tablemanager-*.gem || exit 1
+#ruby /cosmos/bin/cosmos load /cosmos/plugins/gems/cosmosc2-tool-dataviewer-*.gem || exit 1
+#ruby /cosmos/bin/cosmos load /cosmos/plugins/gems/cosmosc2-tool-handbooks-*.gem || exit 1
+#ruby /cosmos/bin/cosmos load /cosmos/plugins/gems/cosmosc2-tool-tablemanager-*.gem || exit 1
 ruby /cosmos/bin/cosmos load /cosmos/plugins/gems/cosmosc2-tool-admin-*.gem || exit 1
-ruby /cosmos/bin/cosmos load /cosmos/plugins/gems/cosmosc2-tool-calendar-*.gem || exit 1
-ruby /cosmos/bin/cosmos load /cosmos/plugins/gems/cosmosc2-tool-autonomic-*.gem || exit 1
+#ruby /cosmos/bin/cosmos load /cosmos/plugins/gems/cosmosc2-tool-calendar-*.gem || exit 1
+#ruby /cosmos/bin/cosmos load /cosmos/plugins/gems/cosmosc2-tool-autonomic-*.gem || exit 1
 
-if [ ! -z $COSMOS_DEMO ]; then
-    ruby /cosmos/bin/cosmos load /cosmos/plugins/gems/cosmosc2-demo-*.gem || exit 1
-fi
+# if [ ! -z $COSMOS_DEMO ]; then
+#     ruby /cosmos/bin/cosmos load /cosmos/plugins/gems/cosmosc2-demo-*.gem || exit 1
+# fi
 
 # Need to allow errors during this wait
 set +e
