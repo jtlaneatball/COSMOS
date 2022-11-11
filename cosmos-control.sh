@@ -36,7 +36,9 @@ case $1 in
   cosmos )
     # Source the .env file to setup environment variables
     set -a
-    . ./.env
+    DIRECTORY=$(cd `dirname $0` && pwd)
+    # export $(cat .env | grep -v "#" | xargs)
+    source $DIRECTORY/.env
     # Start (and remove when done --rm) the cosmos-base container with the current working directory
     # mapped as volume (-v) /cosmos/local and container working directory (-w) also set to /cosmos/local.
     # This allows tools running in the container to have a consistent path to the current working directory.
