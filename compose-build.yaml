@@ -60,6 +60,8 @@ services:
       network: host
       args:
         COSMOS_REGISTRY: ${COSMOS_REGISTRY}
+        COSMOS_TAG: ${COSMOS_TAG}
+    image: "ballaerospace/cosmosc2-minio:${COSMOS_TAG}"
 
   cosmos-redis:
     build:
@@ -67,6 +69,8 @@ services:
       network: host
       args:
         COSMOS_REGISTRY: ${COSMOS_REGISTRY}
+        COSMOS_TAG: ${COSMOS_TAG}
+    image: "ballaerospace/cosmosc2-redis:${COSMOS_TAG}"
 
   cosmos-cmd-tlm-api:
     build:
@@ -75,6 +79,7 @@ services:
       args:
         COSMOS_REGISTRY: ${COSMOS_REGISTRY}
         COSMOS_TAG: ${COSMOS_TAG}
+    image: "ballaerospace/cosmosc2-cmd-tlm-api:${COSMOS_TAG}"
     depends_on:
       - "cosmos-base"
 
@@ -85,6 +90,7 @@ services:
       args:
         COSMOS_REGISTRY: ${COSMOS_REGISTRY}
         COSMOS_TAG: ${COSMOS_TAG}
+    image: "ballaerospace/cosmosc2-script-runner-api:${COSMOS_TAG}"
     depends_on:
       - "cosmos-base"
 
@@ -95,6 +101,7 @@ services:
       args:
         COSMOS_REGISTRY: ${COSMOS_REGISTRY}
         COSMOS_TAG: ${COSMOS_TAG}
+    image: "ballaerospace/cosmosc2-operator:${COSMOS_TAG}"
     depends_on:
       - "cosmos-base"
 
@@ -104,6 +111,8 @@ services:
       network: host
       args:
         COSMOS_REGISTRY: ${COSMOS_REGISTRY}
+        COSMOS_TAG: ${COSMOS_TAG}
+    image: "ballaerospace/cosmosc2-traefik:${COSMOS_TAG}"
 
   cosmos-init:
     build:
@@ -113,6 +122,7 @@ services:
         NPM_URL: ${NPM_URL}
         COSMOS_REGISTRY: ${COSMOS_REGISTRY}
         COSMOS_TAG: ${COSMOS_TAG}
+    image: "ballaerospace/cosmosc2-init:${COSMOS_TAG}"
     depends_on:
       - "cosmos-node"
       - "cosmos-base"
