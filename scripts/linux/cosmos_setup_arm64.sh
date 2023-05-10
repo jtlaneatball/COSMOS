@@ -37,18 +37,18 @@ else
 fi
 
 # Check if the cosmos5 builder already exists and create it if not
-if [ ! "$(docker buildx ls | grep 'cosmos5-armbuilder0' 2> /dev/null)" ]; then
+if [ ! "$(docker buildx ls | grep 'cosmos5-builder0' 2> /dev/null)" ]; then
     echo "creating cosmos multi-arch builder"
-    docker buildx create --platform linux/arm64 --driver-opt network=host --name cosmos5-armbuilder &>/dev/null
+    docker buildx create --platform linux/arm64,linux/amd64,windows/amd64 --driver-opt network=host --name cosmos5-builder &>/dev/null
 else
     echo "cosmos multi-arch builder already exists."
 fi
 
 # switch to and run the cosmos builder
-docker buildx use cosmos5-armbuilder &>/dev/null
+docker buildx use cosmos5-builder &>/dev/null
 docker buildx inspect --bootstrap &>/dev/null
 
 # copy ssl certificate to builder container
-docker cp cosmos-ruby/cacert.pem buildx_buildkit_cosmos5-armbuilder0:/usr/local/share/ca-certificates/ca-certificates.crt
+docker cp cosmos-ruby/cacert.pem buildx_buildkit_cosmos5-builder0:/usr/local/share/ca-certificates/ca-certificates.crt
 # update ssl certificates in builder container
-docker exec -d buildx_buildkit_cosmos5-armbuilder0 update-ca-certificates
+docker exec -d buildx_buildkit_cosmos5-builder0 update-ca-certificates

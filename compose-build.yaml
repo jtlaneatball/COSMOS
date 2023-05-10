@@ -21,7 +21,7 @@ version: "3.5"
 
 services:
   cosmos-ruby:
-    platform: linux/arm64
+    platform: ${PLATFORM}
     build:
       context: "cosmos-ruby"
       network: host
@@ -34,7 +34,7 @@ services:
     image: "${COSMOS_REGISTRY}/ballaerospace/cosmosc2-ruby:${COSMOS_TAG}"
 
   cosmos-node:
-    platform: linux/arm64
+    platform: ${PLATFORM}
     build:
       context: "cosmos-node"
       network: host
@@ -46,7 +46,7 @@ services:
       - "cosmos-ruby"
 
   cosmos-base:
-    platform: linux/arm64
+    platform: ${PLATFORM}
     build:
       context: "cosmos"
       network: host
@@ -58,7 +58,7 @@ services:
       - "cosmos-ruby"
 
   cosmos-minio:
-    platform: linux/arm64
+    platform: ${PLATFORM}
     build:
       context: "cosmos-minio"
       network: host
@@ -68,7 +68,7 @@ services:
     image: "ballaerospace/cosmosc2-minio:${COSMOS_TAG}"
 
   cosmos-redis:
-    platform: linux/arm64
+    platform: ${PLATFORM}
     build:
       context: "cosmos-redis"
       network: host
@@ -78,7 +78,7 @@ services:
     image: "ballaerospace/cosmosc2-redis:${COSMOS_TAG}"
 
   cosmos-cmd-tlm-api:
-    platform: linux/arm64
+    platform: ${PLATFORM}
     build:
       context: "cosmos-cmd-tlm-api"
       network: host
@@ -90,7 +90,7 @@ services:
       - "cosmos-base"
 
   cosmos-script-runner-api:
-    platform: linux/arm64
+    platform: ${PLATFORM}
     build:
       context: "cosmos-script-runner-api"
       network: host
@@ -102,7 +102,7 @@ services:
       - "cosmos-base"
 
   cosmos-operator:
-    platform: linux/arm64
+    platform: ${PLATFORM}
     build:
       context: "cosmos-operator"
       network: host
@@ -114,7 +114,7 @@ services:
       - "cosmos-base"
 
   cosmos-traefik:
-    platform: linux/arm64
+    platform: ${PLATFORM}
     build:
       context: "cosmos-traefik"
       network: host
@@ -124,7 +124,7 @@ services:
     image: "ballaerospace/cosmosc2-traefik:${COSMOS_TAG}"
 
   cosmos-init:
-    platform: linux/arm64
+    platform: ${PLATFORM}
     build:
       context: "cosmos-init"
       network: host
