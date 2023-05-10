@@ -29,21 +29,23 @@ echo "Saving files to $(pwd)"
 export $(cat $COSMOS_DIRECTORY/.env | grep -v "#" | xargs)
 
 # save all docker images to the install directory. ruby, base, and node may not be necessary since they're base images of the others
-docker save -o cosmos-ruby.docker ballaerospace/cosmosc2-ruby:${COSMOS_TAG}
-docker save -o cosmos-base.docker ballaerospace/cosmosc2-base:${COSMOS_TAG}
-docker save -o cosmos-node.docker ballaerospace/cosmosc2-node:${COSMOS_TAG}
-docker save -o cosmos-cmd-tlm-api.docker ballaerospace/cosmosc2-cmd-tlm-api:${COSMOS_TAG}
-docker save -o cosmos-minio-init.docker ballaerospace/cosmosc2-minio:${COSMOS_TAG}
-docker save -o cosmos-init.docker ballaerospace/cosmosc2-init:${COSMOS_TAG}
-docker save -o cosmos-operator.docker ballaerospace/cosmosc2-operator:${COSMOS_TAG}
-docker save -o cosmos-redis.docker ballaerospace/cosmosc2-redis:${COSMOS_TAG}
-docker save -o cosmos-script-runner-api.docker ballaerospace/cosmosc2-script-runner-api:${COSMOS_TAG}
-docker save -o cosmos-traefik.docker ballaerospace/cosmosc2-traefik:${COSMOS_TAG}
+# docker save -o cosmos-ruby.docker ballaerospace/cosmosc2-ruby:${COSMOS_TAG}
+# docker save -o cosmos-base.docker ballaerospace/cosmosc2-base:${COSMOS_TAG}
+# docker save -o cosmos-node.docker ballaerospace/cosmosc2-node:${COSMOS_TAG}
+docker save -o cosmosc2-cmd-tlm-api.docker ballaerospace/cosmosc2-cmd-tlm-api:${COSMOS_TAG}
+docker save -o cosmosc2-init.docker ballaerospace/cosmosc2-init:${COSMOS_TAG}
+docker save -o cosmosc2-minio.docker ballaerospace/cosmosc2-minio:${COSMOS_TAG}
+docker save -o cosmosc2-operator.docker ballaerospace/cosmosc2-operator:${COSMOS_TAG}
+docker save -o cosmosc2-redis.docker ballaerospace/cosmosc2-redis:${COSMOS_TAG}
+docker save -o cosmosc2-script-runner-api.docker ballaerospace/cosmosc2-script-runner-api:${COSMOS_TAG}
+docker save -o cosmosc2-traefik.docker ballaerospace/cosmosc2-traefik:${COSMOS_TAG}
 
 # cosmos 5 also needs minio to run, so save the arm64 image
-docker pull minio/minio:RELEASE.2021-06-17T00-10-46Z@sha256:2bf13dd19c522585bca418abfac3783b328d723740758fdbe72fde61c55e4fdc
-docker save -o minio.docker minio/minio
+# docker pull minio/minio:RELEASE.2021-06-17T00-10-46Z@sha256:2bf13dd19c522585bca418abfac3783b328d723740758fdbe72fde61c55e4fdc
+# docker save -o minio.docker minio/minio
 
-cp $COSMOS_DIRECTORY/compose.yaml .
 cp $COSMOS_DIRECTORY/.env .
+cp $COSMOS_DIRECTORY/cacert.pem .
+cp $COSMOS_DIRECTORY/compose.yaml .
 cp $COSMOS_DIRECTORY/scripts/linux/cosmos_load_arm64.sh .
+cp $COSMOS_DIRECTORY/cosmos-control.sh .
